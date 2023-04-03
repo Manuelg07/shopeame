@@ -1,0 +1,36 @@
+<header [ngClass]="'header'">
+    <div [ngClass]="'header-title'">
+        <div [ngClass]="'header-title_image'">
+            <img src="{{image.src}}" alt="{{image.alt}}">
+        </div>
+        <div [ngClass]="'header-title_text'">
+            <h2>Shopéame!</h2>
+        </div>
+    </div>
+    <nav [ngClass]="'header-nav'">
+        <div [ngClass]="'header-nav__links'">
+            <a routerLink="/">
+                <div [ngClass]="'header-nav__links__image'">
+                    <img src="/assets/images/radiation.png" alt="home">
+                </div>
+                Home 
+            </a>
+        </div>
+        <div [ngClass]="'header-nav__links'">
+            <a routerLink="/products">
+                <div [ngClass]="'header-nav__links__image'">
+                    <img src="/assets/images/binoculars.png" alt="home">
+                </div>
+                 Prods. 
+            </a>
+        </div>
+        <div [ngClass]="'header-nav__links'">
+            <a routerLink="/create">
+                <div [ngClass]="'header-nav__links__image'">
+                    <img src="/assets/images/volante.png" alt="home">
+                </div>
+                 Gestión 
+            </a>
+        </div>
+    </nav>
+</header>

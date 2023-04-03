@@ -1,0 +1,46 @@
+<!-- Creamos un contenedor principal con una clase llamada 'top-container' y dos elementos hijos -->
+<div [ngClass]="'top-container'">
+  <!-- El primer hijo es un contenedor que tendrá el título de nuestra página -->
+  <div [ngClass]="'top-container_title'">
+    <!-- Creamos un encabezado de nivel 3 y le pasamos una cadena de texto en la que utilizamos
+    interpolación para mostrar la cantidad de productos que hay en nuestro listado -->
+    <h3> Listado de productos ({{productsAmount}})</h3>
+  </div>
+  <!-- El segundo hijo es otro contenedor que tendrá dos botones y un input para filtrar los productos -->
+  <div [ngClass]="'top-container__inputs'">
+    <!-- Creamos un contenedor para los botones y le asignamos una clase llamada 'top-container__inputs_buttons' -->
+    <div [ngClass]="'top-container__inputs_buttons'">
+      <!-- Creamos un botón y le asignamos una clase 'top-container__inputs_buttons_btn' si el valor de la variable 'selected' es false,
+      o una clase 'top-container__inputs_buttons_btn_selectedOne' si el valor de 'selected' es true. Al hacer clic en el botón llamamos
+      la función 'changeToggle()' -->
+      <button [ngClass]="{'top-container__inputs_buttons_btn_selectedOne': selected == true, 'top-container__inputs_buttons_btn': selected == false}"
+        (click)="changeToggle()">
+        <!-- Insertamos una imagen en el botón -->
+        <img src="/assets/images/cuadricula.png" alt="cuadricula">
+      </button>
+      <!-- Repetimos el proceso para el segundo botón, pero en este caso asignamos las clases según el valor de 'selectedTwo' -->
+      <button [ngClass]="{'top-container__inputs_buttons_btn_selectedOne': selectedTwo == true, 'top-container__inputs_buttons_btn': selectedTwo == false}"
+        (click)="changeToggle()">
+        <img src="/assets/images/elementos-de-lista.png" alt="lista">
+      </button>
+    </div>
+    <!-- Creamos un contenedor para el input y le asignamos una clase llamada 'top-container__inputs_searcher' -->
+    <div [ngClass]="'top-container__inputs_searcher'">
+      <!-- Creamos un input y le asignamos una directiva ngModel para que enlace su valor a la variable 'name', y una directiva keydown para que llame
+      a la función 'searchProduct()' cuando se presione una tecla -->
+      <input type="text" [(ngModel)]="name" (keydown)="searchProduct()" placeholder="Buscador">
+    </div>
+  </div>
+</div>
+
+<!-- Creamos otro contenedor con una clase llamada 'cuadricle-view' o 'list-view' según el valor de la variable 'listView', y mostramos una tarjeta de producto
+por cada elemento del array 'searchedProducts' -->
+<div [ngClass]="{'cuadricle-view' : listView == false,  'list-view': listView == true}">
+  <div [ngClass]="'product-card'" *ngFor="let product of searchedProducts">
+    <!-- Insertamos un componente llamado 'app-product-card' y le pasamos como propiedad el objeto 'product' -->
+    <app-product-card [product]="product"></app-product-card>
+  </div>
+</div>
+
+
+
